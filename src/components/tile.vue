@@ -1,7 +1,7 @@
 <template>
-  <div class="tile">
+  <div class="tile flex flex-col">
     <div class="header">
-      <h1 class="py-2 text-xl">{{ title }}</h1>
+      <h1 class="py-2 text-xl text-txt-dark">{{ title }}</h1>
     </div>
     <slot></slot>
   </div>
@@ -20,6 +20,7 @@ defineProps<tileProps>();
   border-radius: 10px;
   padding: 10px;
   margin: 10px;
-  @apply max-w-lg;
+  height: 50vh;
+  width: 50vw;
 }
 </style>
