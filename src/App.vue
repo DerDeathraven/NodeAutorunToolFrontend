@@ -4,5 +4,6 @@
 </template>
 <script setup>
 import Navbar from "./components/navigation/navbar.vue";
+
 </script>
 <style scoped></style>

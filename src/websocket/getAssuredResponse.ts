@@ -7,23 +7,16 @@ export async function getAssuredResponse(
 ) {
   try {
     const answer = await Promise.race([
-      promTimeout(),
+      timeout(2000, false),
       socketRequest(channel, message),
     ]);
     return answer;
   } catch (err) {
     if (i == 4) throw new Error("4 tries failed");
     console.log(`[${channel}]Timeout retrying in 2s...`);
-    await timeout(2000);
+    await timeout(2000, true);
     return getAssuredResponse(channel, message, i + 1);
   }
-}
-function promTimeout() {
-  return new Promise<boolean>((resolve, reject) => {
-    setTimeout(() => {
-      reject();
-    }, 2000);
-  });
 }
 function socketRequest(channel: string, message: string) {
   return new Promise((resolve) => {
@@ -32,10 +25,10 @@ function socketRequest(channel: string, message: string) {
     });
   });
 }
-function timeout(time: number) {
+function timeout(time: number, res: boolean) {
   return new Promise<void>((resolve, reject) => {
     setTimeout(() => {
-      resolve();
+      res ? resolve() : reject();
     }, time);
   });
 }
