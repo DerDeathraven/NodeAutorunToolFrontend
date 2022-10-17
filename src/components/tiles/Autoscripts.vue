@@ -25,6 +25,10 @@ const scripts: Ref<string[]> = ref([]);
 onMounted(async () => {
   try {
     scripts.value = await getAssuredResponse("getScripts", "true");
+    executionStore.globalLog = await getAssuredResponse(
+      "GET_GLOBAL_LOGS",
+      "true"
+    );
   } catch (error) {
     console.log(error);
   }

@@ -2,7 +2,7 @@
   <Tile :title="activeScript" class="h-full">
     <div class="overflow-auto flex flex-col h-full">
       <LogEntry
-        v-for="(entry, key) of executionStore.scriptLog.value"
+        v-for="(entry, key) of logArr"
         :key="key"
         :entry="entry"
       ></LogEntry>
@@ -22,7 +22,13 @@ const activeScript = computed(() => {
   if (executionStore.activeScript.value != "") {
     return executionStore.activeScript.value;
   }
-  return "Ready to execute Script";
+  return "Global Logs";
+});
+const logArr = computed(() => {
+  if (executionStore.activeScript.value != "") {
+    return executionStore.scriptLog.value;
+  }
+  return executionStore.getNormalizedGlobalLogs.value;
 });
 </script>
 

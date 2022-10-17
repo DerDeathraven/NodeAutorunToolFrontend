@@ -9,4 +9,5 @@ export type LogEntry = {
   time: Date;
   type: "CRASH" | "DATA" | "WARNING" | "FINISH";
   output: ArrayBuffer;
+  isOld?: boolean;
 };
