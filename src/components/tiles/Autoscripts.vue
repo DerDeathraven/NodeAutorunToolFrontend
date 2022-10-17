@@ -36,9 +36,6 @@ onMounted(async () => {
 function runScript(script: string) {
   executionStore.executeScript(script);
 }
-function changeColor(element: HTMLObjectElement) {
-  console.log(playIcon);
-}
 </script>
 
 <style scoped>
