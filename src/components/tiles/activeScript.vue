@@ -18,7 +18,6 @@ import Tile from "../tile.vue";
 import LogEntry from "../LogEntry.vue";
 const executionStore = storeToRefs(useExecutionStore());
 const activeScript = computed(() => {
-  console.log(executionStore.activeScript.value);
   if (executionStore.activeScript.value != "") {
     return executionStore.activeScript.value;
   }

@@ -52,7 +52,6 @@ export const useExecutionStore = defineStore("execution", {
       const activeListner = socket.on("scriptOut", (returnData: LogEntry) => {
         this.scriptRunning = true;
         this.activeScript = script;
-        console.log(returnData);
         this.scriptLog.push(returnData);
         if (!returnData.isOld) {
           switch (returnData.type) {
