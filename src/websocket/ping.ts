@@ -4,7 +4,7 @@ import { getAssuredResponse } from "./getAssuredResponse";
 export function startPing(inpRef: Ref<boolean>) {
   const pingAction = async () => {
     try {
-      await getAssuredResponse("ping", "true");
+      await getAssuredResponse("ping", "true", 3);
       inpRef.value == false ? (inpRef.value = true) : "";
     } catch (err) {
       console.log(err);
